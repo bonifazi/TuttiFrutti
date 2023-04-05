@@ -1,5 +1,5 @@
 # Collection of miscellaneous R functions.  
-You are free to copy, use, and edit these R functions as soon as you acknowledge the source, i.e., this repository (https://github.com/bonifazi/R_utils).  
+You are free to copy, use, and edit these R functions as soon as you acknowledge the source, i.e., this repository (https://github.com/bonifazi/R_utils). For more on usage see the [License](https://github.com/bonifazi/R_utils/blob/main/LICENSE) documentation.  
 Your suggestions on improving these functions are very welcomed. Send me an email (renzo.bonifazi@outlook.it) or open an issue in GitHub.
 ## Description:
 These functions are documented with the R [docstring](https://cran.r-project.org/web/packages/docstring/vignettes/docstring_intro.html) package.  
