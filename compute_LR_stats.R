@@ -140,21 +140,8 @@ compute_LR_stats <-
     #' @section
     #' TODO:
     #' [done]
-    #' - better example dataset: made a correlated partial based on whole EBV
-    #' - switched around EBV_whole and EBV_partial in example dataset and function arg order to be consistent with order inside function where col2 = partial and col3
-    #' - rounded returned 'stats' data.frame to 6 decimals avoiding scientific notation
-    #' - added regression slope on validated data in blue
-    #' - improved plotting:
-    #'    - standardize for GSD x- and y- if VAR_A is provided
-    #'    - add blue regression line on validation group
-    #'    - add stats in a caption
-    #'    - make aspect.ratio = 1 for x-y plotting
-    #'
-    #' [to debug]
-    #' - with parallel:
-    #' Error in get(name, envir = envir) : object 'VAR_A' not found
-    #' Error in get(name, envir = envir) : object 'average_F' not found
-    #' It has to do with the exported args to the clusters
+    #' - fixed error with parallel on windows by definin the env of the cluster varlist,
+    #' following https://stackoverflow.com/questions/25728178/r-cluster-export-error-object-not-found
     #'
     #' [Higher priority]
     #' - allow for providing inbreeding data.frame instead of average_F
@@ -348,10 +335,11 @@ compute_LR_stats <-
       cl <- makeCluster(ncpus)
       clusterExport(
         cl = cl,
-        c(
+        varlist = c(
           "inbreeding", "val_groupIDs",
           "VAR_A", "average_F", "bootstrap"
-        )
+        ),
+        envir = environment(core_calcs)
       )
       if (verbose == T) {
         print(cl)
