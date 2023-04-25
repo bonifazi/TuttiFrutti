@@ -134,8 +134,8 @@ compute_LR_stats <-
     #' results <- compute_LR_stats(EBV_partial = data[,c(1,2)], EBV_whole = data[,c(1,3)], val_groupIDs = val_groupIDs, VAR_A = 20.5, inbreeding = inbreeding, plot = T, plot_verbose = T, plot_subgroups = T, bootstrap = T, boot_samples = 100, parallel = "snow", ncpus = 4)
     #' # view the LR stats results
     #' results$stats
-    #' # view the plots
-    #' results$plots
+    #' # view the plot
+    #' results$plot
     #'
     #' @section
     #' TODO:
