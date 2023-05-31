@@ -27,3 +27,6 @@ These Rscripts are to be run in a command-line style, e.g. `Rscript --vanilla sc
 To see a description of each argument use: `Rscript Analyse_Plink_ROH.R --help.`  
 Note that the `detectRuns` package groups the results based on the number of groups in the first column of the ROH files, which I guess can be used if you want to define sub-populations. For now, the Rscript internally overrides the ‘group’ column of the `--plink_roh` file with that given in the `--group` label.
 * ... [new Rscripts will be added here]
+
+## Why TuttiFrutti? 
+TuttiFrutti is sometimes used for products that have a mix of different colours and flavours, such as candies. My Swedish collegue often said to me 'TuttiFrutti!' to show off his italian skills. In Italian, 'Tutti Frutti' translates to 'all flavours', which is similar to what this repository is intended to be: a mix of different R things (and maybe more later on).
