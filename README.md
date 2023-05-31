@@ -1,4 +1,8 @@
-# Collection of miscellaneous R functions and R scripts.  
+<p align="center">
+<img src="https://www.youwish.nl/wp-content/uploads/2023/03/Tutti-Frutti-Recovered.jpg" width="300" height="300">
+</p>
+
+# TuttiFrutti is a collection of miscellaneous R functions and R scripts.  
 You are free to use these [R functions](https://github.com/bonifazi/R_utils/edit/main/README.md#list-of-r-functions) and [R scripts](https://github.com/bonifazi/R_utils/edit/main/README.md#list-of-r-functions), for more on their usage, see the MIT [License](https://github.com/bonifazi/R_utils/blob/main/LICENSE) documentation.  
 Please acknowledge its source, i.e., this repository (https://github.com/bonifazi/R_utils), so that it may be useful to others as well.
 Your suggestions on improving these functions are very welcomed. Send me an email at (renzo.bonifazi@outlook.it) or open an issue here on GitHub.
