@@ -33,15 +33,15 @@ option_list <- list(
   ),
    make_option(c("--effect_name"),
     type = "character", default = NULL,
-    help = "Name of the effect to be tabulated", metavar = "character"
+    help = "Name of the effect to be tabulated, i.e. the string name as in the asreml.sln file first column", metavar = "character"
   ),
    make_option(c("--trait_names"),
     type = "character", default = NULL,
-    help = "List of trait names separated by a comma", metavar = "character"
+    help = "String list of trait names separated by a comma, e.g. 'Trait1, Trait2, Trait3'", metavar = "character"
   ),
     make_option(c("--varA"),
     type = "character", default = NULL,
-    help = "Genetic variance(s) for defined trait(s). It MUST follow the order of --trait_names provided", metavar = "character"
+    help = "String of genetic variance(s) for defined trait(s) separated by a comma. It MUST follow the order of --trait_names provided, e.g. '1, 20, 0.10'", metavar = "character"
   ),
   make_option(c("--output"),
     type = "character", default = NULL,
