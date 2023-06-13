@@ -25,7 +25,10 @@ These Rscripts are to be run in a command-line style, e.g. `Rscript --vanilla sc
 * [Analyse Plink ROH](https://github.com/bonifazi/R_utils/blob/main/Analyse_Plink_ROH.R). A command-line Rscript to analyse genomic inbreeding from Runs of Homozygosity (ROH) obtained from Plink using the `detectRUNS` R package. This script produces .csv and .pdf files on ROH inbreeding. To run it:  
 `Rscript --vanilla Analyse_Plink_ROH.R --plink_files plinkcleaned --plink_roh ROH.hom --group geno_BRD --pedigree ped.ped --output results_dir 2>&1 | tee logfile.log`  
 To see a description of each argument use: `Rscript Analyse_Plink_ROH.R --help.`  
-Note that the `detectRuns` package groups the results based on the number of groups in the first column of the ROH files, which I guess can be used if you want to define sub-populations. For now, the Rscript internally overrides the ‘group’ column of the `--plink_roh` file with that given in the `--group` label.
+Note that the `detectRuns` package groups the results based on the number of groups in the first column of the ROH files, which I guess can be used if you want to define sub-populations. For now, the Rscript internally overrides the ‘group’ column of the `--plink_roh` file with that given in the `--group` label.  
+* [Extract EBV and REL from asreml .sln file](https://github.com/bonifazi/TuttiFrutti/blob/main/ExtractAsremlSolutions.R). A command-line Rscript to extract EBV and REL from asreml .sln file. This script produces a .csv file with ID, EBV, REL, and (user-provided) VAR(A) for each trait in the asreml solution file (.sln). To run it:  
+`Rscript --vanilla ExtractAsremlSolutions.R --file my_path/asreml.sln --effect_name effect5 --trait_names "Trait1, Trait2, Trait3" --varA "varA_trait1, varA_trait2, varA_trait3" --output myoutput.csv`  
+To see a description of each argument use: `Rscript ExtractAsremlSolutions.R --help.`
 * ... [new Rscripts will be added here]
 
 ## Why TuttiFrutti? 
