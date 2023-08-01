@@ -97,7 +97,7 @@ mutate(IDcode= str_remove(IDcode, "^0+")) %>% # remove leading 0's from the IDco
 mutate(varA = as.numeric(variances[[1]][trait])) %>% # associate trait variance to each trait
 mutate(trait = trait_names[[1]][trait]) %>% # associate trait names to each trait
 mutate(REL = (1-((se^2) / varA)) ) %>% # compute REL as REL = 1-(se^2/varA)
-pivot_wider(id_col = IDcode, names_from = trait, values_from = c(varA, EBV, REL)) %>% # tabulate the varA, EBV, and REL for each animal ID
+pivot_wider(id_cols = IDcode, names_from = trait, values_from = c(varA, EBV, REL)) %>% # tabulate the varA, EBV, and REL for each animal ID
 rename(ID = IDcode) # rename IDcode to ID to avoid possible confusion
 
 # print some summary stats
