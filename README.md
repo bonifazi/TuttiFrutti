@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://www.youwish.nl/wp-content/uploads/2023/03/Tutti-Frutti-Recovered.jpg" width="300" height="300">
+<img src="https://github.com/bonifazi/TuttiFrutti/assets/74569672/448b4952-b723-4f35-9ac0-fafb162cbade" width="300" height="300">
 </p>
 
 # TuttiFrutti is a collection of miscellaneous R functions and R scripts.  
