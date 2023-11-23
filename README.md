@@ -52,4 +52,4 @@ howpublished={\url{https://github.com/bonifazi/TuttiFrutti}},
 Moreover, please acknowledge the original referenced papers for their methodology as indicated within the specific R functions or R scripts under `@references`.
 
 ## Contact
-Your suggestions on improving these functions and scripts are very welcome. For suggestions, questions or support, feel free to contact renzo.bonifazi@outlook.it, or open an issue here on GitHub.
+Your suggestions on improving these functions and scripts are very welcome. If you have any suggestions, questions, or need support, feel free to contact renzo.bonifazi@outlook.it, or open an issue here on GitHub.
