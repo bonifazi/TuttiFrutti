@@ -4,6 +4,26 @@
 
 # TuttiFrutti is a collection of miscellaneous R functions and R scripts.  
 
+## Licence
+You are free to use these [R functions](https://github.com/bonifazi/R_utils/edit/main/README.md#list-of-r-functions) and [R scripts](https://github.com/bonifazi/R_utils/edit/main/README.md#list-of-r-functions).
+This project is licensed under the MIT license - see the [License](https://github.com/bonifazi/R_utils/blob/main/LICENSE) file for details.
+
+## Citation
+Please acknowledge the original referenced papers for their methodology as indicated within the specific R functions or R scripts under `@references`. Moreover, if you use this code in your research or find it helpful, please consider acknowledging this repository (https://github.com/bonifazi/TuttiFrutti) by citing it as:  
+_TuttiFrutti: A Collection of Miscellaneous R Functions and R Scripts. Bonifazi R. 2023. GitHub Repository. Available online: https://github.com/bonifazi/TuttiFrutti_
+
+```bibtext
+@misc{TuttiFrutti,
+title={TuttiFrutti: A Collection of Miscellaneous R Functions and R Scripts},
+author={Renzo Bonifazi},
+year={2023},
+howpublished={\url{https://github.com/bonifazi/TuttiFrutti}},
+}
+```
+
+## Contact
+Your suggestions on improving these functions and scripts are very welcome. If you have any suggestions, questions, or need support, feel free to contact renzo.bonifazi@outlook.it, or open an issue here on GitHub.
+
 ## List of R functions:
 ### Description on usage:
 The R functions are all documented with the R [docstring](https://cran.r-project.org/web/packages/docstring/vignettes/docstring_intro.html) package. Read the documentation to know more about how to use them, and what options are available. Where possible, I provide some examples to show their functionalities.  
@@ -32,24 +52,3 @@ To see a description of each argument use: `Rscript ExtractAsremlSolutions.R --h
 
 ## Why TuttiFrutti? 
 TuttiFrutti is used for products that mix different colours and flavours, such as candies. My Swedish colleague often told me 'TuttiFrutti!' to show off his Italian skills. In Italian, 'Tutti Frutti' translates to 'all flavours', which is similar to what this repository is intended to be: a mix of different R things (and maybe more later on).
-
-## Licence
-You are free to use these [R functions](https://github.com/bonifazi/R_utils/edit/main/README.md#list-of-r-functions) and [R scripts](https://github.com/bonifazi/R_utils/edit/main/README.md#list-of-r-functions).
-This project is licensed under the MIT license - see the [License](https://github.com/bonifazi/R_utils/blob/main/LICENSE) file for details.
-
-## Citation
-If you use this code in your research or find it helpful, please consider acknowledging this repository (https://github.com/bonifazi/TuttiFrutti) by citing it as:  
-_TuttiFrutti: A Collection of Miscellaneous R Functions and R Scripts. Bonifazi R. 2023. GitHub Repository. Available online: https://github.com/bonifazi/TuttiFrutti_
-
-```bibtext
-@misc{TuttiFrutti,
-title={TuttiFrutti: A Collection of Miscellaneous R Functions and R Scripts},
-author={Renzo Bonifazi},
-year={2023},
-howpublished={\url{https://github.com/bonifazi/TuttiFrutti}},
-}
-```
-Moreover, please acknowledge the original referenced papers for their methodology as indicated within the specific R functions or R scripts under `@references`.
-
-## Contact
-Your suggestions on improving these functions and scripts are very welcome. If you have any suggestions, questions, or need support, feel free to contact renzo.bonifazi@outlook.it, or open an issue here on GitHub.
