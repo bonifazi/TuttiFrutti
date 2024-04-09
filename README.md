@@ -48,7 +48,10 @@ Note that the `detectRuns` package groups the results based on the number of gro
 * [Extract EBV and REL from asreml .sln file](https://github.com/bonifazi/TuttiFrutti/blob/main/ExtractAsremlSolutions.R). A command-line Rscript to extract EBV and REL from asreml .sln file. This script produces a .csv file with ID, EBV, REL, and (user-provided) VAR(A) for each trait in the asreml solution file (.sln). To run it:  
 `Rscript --vanilla ExtractAsremlSolutions.R --file my_path/asreml.sln --effect_name effect5 --trait_names "Trait1, Trait2, Trait3" --varA "varA_trait1, varA_trait2, varA_trait3" --output myoutput.csv`  
 To see a description of each argument use: `Rscript ExtractAsremlSolutions.R --help.`  
-* [Plot postgibbsf90 convergence](https://github.com/bonifazi/TuttiFrutti/blob/main/plot_postgibbsf90.R). Rscript to plot postgibbsf90 covariances. The script produces a .pdf file. See --help for usage and read the details section of the Rscript for more information on input and settings.
+* [Plot postgibbsf90 convergence](https://github.com/bonifazi/TuttiFrutti/blob/main/plot_postgibbsf90.R). Rscript to plot postgibbsf90 covariances. The script produces a .pdf file. See --help for usage and read the details section of the Rscript for more information on input and settings. To run it:  
+`Rscript --vanilla plot_postgibbsf90.R --file my_path/postgibbs_samples --output postgibbs_plots.pdf`
+or with more control on output, e.g., adding trait names and making two main groups:  
+`Rscript --vanilla plot_postgibbsf90.R -f my_path/postgibbs_samples -o postgibbs_plots.pdf -g 2 -t "BRD1_AWW, BRD2_AWW, BRD1_CE, BRD2_CE" `
 * ... [new Rscripts will be added here]
 
 ## Why TuttiFrutti? 
