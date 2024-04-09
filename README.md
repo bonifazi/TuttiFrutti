@@ -47,7 +47,8 @@ To see a description of each argument use: `Rscript Analyse_Plink_ROH.R --help.`
 Note that the `detectRuns` package groups the results based on the number of groups in the first column of the ROH files, which I guess can be used if you want to define sub-populations. For now, the Rscript internally overrides the ‘group’ column of the `--plink_roh` file with that given in the `--group` label.  
 * [Extract EBV and REL from asreml .sln file](https://github.com/bonifazi/TuttiFrutti/blob/main/ExtractAsremlSolutions.R). A command-line Rscript to extract EBV and REL from asreml .sln file. This script produces a .csv file with ID, EBV, REL, and (user-provided) VAR(A) for each trait in the asreml solution file (.sln). To run it:  
 `Rscript --vanilla ExtractAsremlSolutions.R --file my_path/asreml.sln --effect_name effect5 --trait_names "Trait1, Trait2, Trait3" --varA "varA_trait1, varA_trait2, varA_trait3" --output myoutput.csv`  
-To see a description of each argument use: `Rscript ExtractAsremlSolutions.R --help.`
+To see a description of each argument use: `Rscript ExtractAsremlSolutions.R --help.`  
+* [Plot postgibbsf90 convergence](https://github.com/bonifazi/TuttiFrutti/blob/main/plot_postgibbsf90.R). Rscript to plot postgibbsf90 covariances. The script produces a .pdf file. See --help for usage and read the details section of the Rscript for more information on input and settings.
 * ... [new Rscripts will be added here]
 
 ## Why TuttiFrutti? 
