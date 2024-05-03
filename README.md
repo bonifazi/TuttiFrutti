@@ -55,4 +55,4 @@ or with more control on output, e.g., adding trait names and making two main gro
 * ... [new Rscripts will be added here]
 
 ## Why TuttiFrutti? 
-TuttiFrutti is used for products that mix different colours and flavours, such as candies. My Swedish colleague often told me 'TuttiFrutti!' to show off his Italian skills. In Italian, 'Tutti Frutti' translates to 'all flavours', which is similar to what this repository is intended to be: a mix of different R things (and maybe more later on).
+TuttiFrutti is used for products that mix different colours and flavours, such as candies. My Swedish colleague often told me 'TuttiFrutti!' to show off his Italian skills. In Italian, 'Tutti Frutti' translates to 'all fruits', which is similar to what this repository is intended to be: a mix of different R things (and maybe more later on).
