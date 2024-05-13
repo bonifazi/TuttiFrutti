@@ -4,6 +4,9 @@
 
 # TuttiFrutti is a collection of miscellaneous R functions and R scripts.  
 
+[![DOI](https://zenodo.org/badge/414376257.svg)](https://zenodo.org/doi/10.5281/zenodo.11185709)
+![GitHub Release](https://img.shields.io/github/v/release/bonifazi/TuttiFrutti?color=green)
+
 ## Licence
 You are free to use these [R functions](https://github.com/bonifazi/R_utils/edit/main/README.md#list-of-r-functions) and [R scripts](https://github.com/bonifazi/R_utils/edit/main/README.md#list-of-r-functions).
 This project is licensed under the MIT license - see the [License](https://github.com/bonifazi/R_utils/blob/main/LICENSE) file for details.
@@ -18,6 +21,7 @@ title={TuttiFrutti: A Collection of Miscellaneous R Functions and R Scripts},
 author={Renzo Bonifazi},
 year={2023},
 howpublished={\url{https://github.com/bonifazi/TuttiFrutti}},
+doi={10.5281/zenodo.11185709}
 }
 ```
 
