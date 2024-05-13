@@ -26,7 +26,7 @@ doi={10.5281/zenodo.11185709}
 ```
 
 ## Contact
-Your suggestions on improving these functions and scripts are very welcome. If you have any suggestions, questions, or need support, feel free to contact renzo.bonifazi@outlook.it, or open an issue here on GitHub.
+Your suggestions on improving these functions and scripts are very welcome. If you have any suggestions, questions, or need support, feel free to contact renzo.bonifazi@outlook.it, or open an [issue here on GitHub](https://github.com/bonifazi/TuttiFrutti/issues/new).
 
 ## List of R functions:
 ### Description on usage:
