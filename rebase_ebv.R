@@ -74,6 +74,9 @@ rebase_ebv <- function(data,
   #'
   #' @section
   #' TODO:
+  #' [Mid priority]
+  #' - (possible): add option to provide as many constant_values as number of cols in data,
+  #' e.g. constant_value = c(val_1, val_2, val_3)
   #' [Lower priority]
   #' - (possible): remove dependency on assertthat
   #'
