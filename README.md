@@ -13,7 +13,7 @@ This project is licensed under the MIT license - see the [License](https://githu
 
 ## Citation
 Please acknowledge the original referenced papers for their methodology as indicated within the specific R functions or R scripts under `@references`. Moreover, if you use this code in your research or find it helpful, please consider acknowledging this repository (https://github.com/bonifazi/TuttiFrutti) by citing it as:  
-_TuttiFrutti: A Collection of Miscellaneous R Functions and R Scripts. Bonifazi R. 2023. GitHub Repository. Available online: https://github.com/bonifazi/TuttiFrutti_
+_TuttiFrutti: A Collection of Miscellaneous R Functions and R Scripts. Bonifazi R. 2023. GitHub Repository. DOI:[10.5281/zenodo.11185709](https://doi.org/10.5281/zenodo.11185710). Available online: https://github.com/bonifazi/TuttiFrutti_
 
 ```bibtext
 @misc{TuttiFrutti,
@@ -21,7 +21,7 @@ title={TuttiFrutti: A Collection of Miscellaneous R Functions and R Scripts},
 author={Renzo Bonifazi},
 year={2023},
 howpublished={\url{https://github.com/bonifazi/TuttiFrutti}},
-doi={10.5281/zenodo.11185709}
+doi={https://doi.org/10.5281/zenodo.11185710}
 }
 ```
 
