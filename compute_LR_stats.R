@@ -236,7 +236,7 @@ compute_LR_stats <-
       #  validation IDs can be found and that there are no NAs
       if (bootstrap == T & hasArg(inbreeding)) {
         if (!all(val_groupIDs[, 1] %in% inbreeding[, 1])) {
-          stop("Not all validation group IDs were found in the 'inbreeding' data.frame. Check that col. 2 of 'inbreeding' data.frame has the IDs provided in 'val_groupIDs'")
+          stop("Not all validation group IDs were found in the 'inbreeding' data.frame. Check that col. 1 of 'inbreeding' data.frame has the IDs provided in 'val_groupIDs'")
         }
         if (any(
           is.na(inbreeding[inbreeding[, 1] %in% val_groupIDs[, 1], 2])
