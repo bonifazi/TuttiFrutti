@@ -1,5 +1,6 @@
 rebase_ebv <- function(data,
-                       base_pop,
+                       base_pop = NULL,
+                       constant_value = NULL,
                        decimals = 12,
                        plot = F,
                        verbose = T) {
@@ -15,15 +16,20 @@ rebase_ebv <- function(data,
   #' For instance, you can provide 'data' with structure "ID, EBV1, EBV2, EBV3, ..., EBVn",
   #' where each EBV is for a specific trait.
   #'
+  #' Another alternative usage is to provide a fixed EBV value against which all EBVs are going to be expressed (arg `constant_value`.
+  #' Be careful with this usage and the interpretation of the results. All EBVs across all columns are going to be
+  #' "shifted" by this constant value.
+  #'
   #' @param data a data.frame with individuals' ID in first column, and EBV in col2, col3 .. coln.
   #' @param base_pop a data.frame with individuals' ID in first column to be considered as base population.
+  #' @param constant_value an integer (default = NULL). EBVs will be expressed as deviations from this value. It cannot be used if base_pop is provided.
   #' @param decimals numeric. Number of decimals used internally for checking that new
   #' mean EBV for base population IDs is 0 (default = 12).
   #' @param verbose logic (default = T). Print log details to user.
   #' @param plot logic (default = F). Scatterplot of EBV before vs after rebasing. When 'plot = T' a list is
   #' returned (see @retrun for more information). Black line is a regression line with intercept = 0 and slope = 1,
   #' Blue line is regression line of EBV after rebasing on EBV before rebasing.
-  #' Intercept of the blue line should be the negation of the mean EBV of the base pop and the intercept should be 1.  
+  #' Intercept of the blue line should be the negation of the mean EBV of the base pop and the intercept should be 1.
   #'
   #' @return
   #' if 'plot = F' (default), returns a data.base as provided in 'data' with IDs in col1, re-based EBV in col2, col3, .. coln.
@@ -31,7 +37,7 @@ rebase_ebv <- function(data,
   #' First element named 'rebased_ebv' and having the results and having same structure as when 'plot = F'),
   #' Second element named 'plot' with as many sub-elements named after the column names of 'data' (excluding col1);
   #' and with each sub-element being a ggplot2 object. Thus, to access the plots use e.g. 'output$plots$col1_name'.
-  #' 
+  #'
   #' @usage rebase_ebv(data = data, base_pop = base_pop)
   #'
   #' @importFrom assertthat assert_that
@@ -56,8 +62,13 @@ rebase_ebv <- function(data,
   #' output <- rebase_ebv(data = data, base_pop = base_pop, plot = T)
   #' # check output 'str' (now has 2 levels)
   #' str(output, max.level =  2, give.attr = F)
-  #' 
-  #' head(output$rebased_ebv) # check results for  
+  #'
+  #' head(output$rebased_ebv) # check results for
+  #' output$plot$ebv1 # view scatterplot for column 1 named 'ebv1'
+  #' output$plot$ebv2 # view scatterplot for column 1 named 'ebv2'
+  #'
+  #' # re-base EBV against a constant value
+  #' output <- rebase_ebv(data = data, constant_value = 400, plot = T)
   #' output$plot$ebv1 # view scatterplot for column 1 named 'ebv1'
   #' output$plot$ebv2 # view scatterplot for column 1 named 'ebv2'
   #'
@@ -72,52 +83,91 @@ rebase_ebv <- function(data,
     stop('Please install the "assertthat" package, using \n:
                                     "install.packages("assertthat")"')
   }
+
   # 1) Checks on given input args ----------------------------------------------
-  # Check on str input args
-  assert_that(is.data.frame(data), is.data.frame(base_pop), is.numeric(decimals))
-  # Check all IDs in 'base_pop' must be found in col1 of 'data' data.frame
-  if (!all(base_pop[, 1] %in% data[, 1])) {
-    stop("Not all IDs in 'base_pop' were found in 'data'. Check you input args.")
+  # check that at least one between constant_value and base_pop are provided
+  if(is.null(constant_value) & is.null(base_pop)) {
+    stop('Please provide `base_pop` or `constant_value` as arguments (only one of the two)')
+  }
+
+  # check that if constant_value is provided base_pop is not provided
+  if(!is.null(constant_value) & !is.null(base_pop)) {
+    stop('Please provide only one between `base_pop` and `constant_value`')
+  }
+
+  # Check the str of input args when using base_pop
+  if(!is.null(base_pop)){
+    assert_that(is.data.frame(data), is.data.frame(base_pop), is.numeric(decimals))
+    # Check all IDs in 'base_pop' must be found in col1 of 'data' data.frame
+    if (!all(base_pop[, 1] %in% data[, 1])) {
+      stop("Not all IDs in 'base_pop' were found in 'data'. Check you input args.")
+    }
+  }
+
+  # Check the str of input args when using constant_value
+  if(!is.null(constant_value)) {
+    assert_that(is.data.frame(data), is.numeric(constant_value), is.numeric(decimals))
   }
 
   # 2) rebase all EBV in 'ebv' -------------------------------------------------
-  # subset data to retain only base_pop IDs
-  data_bp <- merge(data, base_pop, by.x = colnames(data)[1], by.y = colnames(base_pop)[1])
-  new_data <- data # make an empty copy of data fill with NA's
-  new_data[, -1] <- NA
 
-  if (verbose == T) {
+  # __ 2.1.A) if base_pop is provided
+  if(is.null(constant_value) & !is.null(base_pop)) {
+    # subset data to retain only base_pop IDs
+    data_bp <- merge(data, base_pop, by.x = colnames(data)[1], by.y = colnames(base_pop)[1])
+    # make an empty copy of data & fill it with NA's
+    new_data <- data
+    new_data[, -1] <- NA
+  } else if(
+    # __ 2.1.B) if constant_value is provided
+    !is.null(constant_value) & is.null(base_pop)) {
+    # make an empty copy of data & fill it with NA's
+    new_data <- data
+    new_data[, -1] <- NA
+  }
+
+  if (verbose == T & is.null(constant_value)) {
     cat(
       " N. individuals in data:", nrow(data), "\n",
       "N. individuals in base population:", nrow(data_bp)
     )
   }
 
-  for (ebv_col in colnames(data)[-1]) { # loop for all columns besides ID col (== col1)
-    # take mean base pop
-    mean_basepop <- mean(data_bp[, ebv_col])
-    # subtract from each EBV col of 'data' the mean EBV of the base_pop group of animals for the corresponding column
+  # __2.2) loop for all columns besides ID col (== col1)
+  for (ebv_col in colnames(data)[-1]) {
 
-    new_data[, ebv_col] <- data[, ebv_col] - mean_basepop
-    new_mean <- mean(merge(new_data, base_pop, by.x = colnames(new_data)[1], by.y = colnames(base_pop)[1])[, ebv_col])
+    # __2.2.A) when base_pop is provided
+    if(is.null(constant_value) & !is.null(base_pop)){
+      # take mean base pop
+      mean_basepop <- mean(data_bp[, ebv_col])
+      # subtract from each EBV col of 'data' the mean EBV of the base_pop group of animals for the corresponding column
 
-    if (verbose == T) {
-      cat(
-        "\n\n Mean EBV of base pop. individulas for col. ", ebv_col, " before rebasing = ", round(mean_basepop, 4), "\n",
-        "Mean EBV of base pop. individulas for col. ", ebv_col, " after rebasing = ", round(new_mean, 4), "\n",
-      )
+      new_data[, ebv_col] <- data[, ebv_col] - mean_basepop
+      new_mean <- mean(merge(new_data, base_pop, by.x = colnames(new_data)[1], by.y = colnames(base_pop)[1])[, ebv_col])
+
+      if (verbose == T) {
+        cat(
+          "\n\n Mean EBV of base pop. individulas for col. ", ebv_col, " before rebasing = ", round(mean_basepop, 4), "\n",
+          "Mean EBV of base pop. individulas for col. ", ebv_col, " after rebasing = ", round(new_mean, 4), "\n"
+        )
+      }
+
+      # check that the mean re-based EBV for base_pop is now 0.
+      #   some rounding is involved, therefore, decimals are provided next to error.
+      if (round(new_mean, decimals) != 0) {
+        stop(
+          "The new mean ebv of base_pop animals is not 0 (value was rounded to ", decimals, " decimals. Current new mean EBV for this group is: ", new_mean,
+          "Check your data for possible errors or decrease the rounding precision in 'decimals' arg."
+        )
+      }
+    } else if(
+      # __ 2.2.B) when constant_value is provided
+      !is.null(constant_value) & is.null(base_pop)) {
+      mean_basepop <- constant_value
+      new_data[, ebv_col] <- data[, ebv_col] - mean_basepop
     }
 
-    # check that the mean re-based EBV for base_pop is now 0.
-    #   some rounding is involved, therefore, decimals are provided next to error.
-    if (round(new_mean, decimals) != 0) {
-      stop(
-        "The new mean ebv of base_pop animals is not 0 (value was rounded to ", decimals, " decimals. Current new mean EBV for this group is: ", new_mean,
-        "Check your data for possible errors or decrease the rounding precision in 'decimals' arg."
-      )
-    }
-
-    # check that correlation and slope between re-based EBV and provided (before re-basing) EBV is 1
+    # 2.3) check that correlation and slope between re-based EBV and provided (before re-basing) EBV is 1
     test_cor <- cor(data[, ebv_col], new_data[, ebv_col])
     reg <- lm(new_data[, ebv_col] ~ data[, ebv_col])
     reg_coef <- as.numeric(coef(reg))
@@ -132,9 +182,9 @@ rebase_ebv <- function(data,
       stop("Error: rebased EBV intercept from regressing EBV after on EBV before reabsing is not equal to - the mean EBV of the base POP.\  Intercept of EBV rebased on EBV before rebasing is:", round(reg_coef[1], 4))
     }
   }
-  
-  # if plot is not requested (default), results are a data.frame
-  if (plot == F) { 
+
+  # if plot is not requested (default), results is a data.frame
+  if (plot == F) {
     return(new_data)
   } else if (plot == T) { # if plot is requested, results are a list.
     # make a plot of EBVs before and after re-basing
@@ -143,6 +193,7 @@ rebase_ebv <- function(data,
     "install.packages("ggplot2")"')
     }
     results <- list(rebased_ebv = new_data)
+
     for (ebv_col in colnames(data)[-1]) { # loop for all columns besides ID col (== col1)
       reg <- lm(new_data[, ebv_col] ~ data[, ebv_col])
       pdat <- as.data.frame(cbind(data[, ebv_col], new_data[, ebv_col]))
@@ -150,9 +201,15 @@ rebase_ebv <- function(data,
         geom_point(colour = "black") +
         geom_abline(intercept = 0, slope = 1, col = "black") + # line passing through 0
         geom_abline(intercept = coef(reg)[1], slope = coef(reg)[2], col = "blue") +
+        theme_bw()+
         xlab("original EBV") +
         ylab("rebased EBV") +
         labs(title = ebv_col)
+
+      if(!is.null(constant_value)) { # add a line on y-axis showing the shift by constant_value
+        results[["plot"]][[ebv_col]] <- results[["plot"]][[ebv_col]] +
+          geom_hline(yintercept = mean(round(reg_coef[1], 4)), col = "red", linetype = "dotted")
+      }
     }
     return(results)
   }
