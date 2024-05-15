@@ -16,9 +16,9 @@ rebase_ebv <- function(data,
   #' For instance, you can provide 'data' with structure "ID, EBV1, EBV2, EBV3, ..., EBVn",
   #' where each EBV is for a specific trait.
   #'
-  #' Another alternative usage is to provide a fixed EBV value against which all EBVs are going to be expressed (arg `constant_value`.
+  #' Another alternative usage is to provide a fixed EBV value against which all EBVs are going to be expressed (arg `constant_value`).
   #' Be careful with this usage and the interpretation of the results. All EBVs across all columns are going to be
-  #' "shifted" by this constant value.
+  #' "shifted" and expressed against this constant value.
   #'
   #' @param data a data.frame with individuals' ID in first column, and EBV in col2, col3 .. coln.
   #' @param base_pop a data.frame with individuals' ID in first column to be considered as base population.
