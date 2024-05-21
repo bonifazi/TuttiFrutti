@@ -28,10 +28,15 @@ doi={https://doi.org/10.5281/zenodo.11185710}
 ## Contact
 Your suggestions on improving these functions and scripts are very welcome. If you have any suggestions, questions, or need support, feel free to contact renzo.bonifazi@outlook.it, or open an [issue here on GitHub](https://github.com/bonifazi/TuttiFrutti/issues/new).
 
-## List of R functions:
-### Description on usage:
+## List of R functions
+### Description on usage
 The R functions are all documented with the R [docstring](https://cran.r-project.org/web/packages/docstring/vignettes/docstring_intro.html) package. Read the documentation to know more about how to use them, and what options are available. Where possible, I provide some examples to show their functionalities.  
-To view the functions' documentation, first load the [`docstring`](https://github.com/Dasonk/docstring) package in R, then view the documentation of the function by running `docstring(fun = "<functionname.R>")` in the console.
+To view the functions' documentation, first load the [`docstring`](https://github.com/Dasonk/docstring) package in R, then view the documentation of the function by running `docstring(fun = "<function.R>")` in the console.
+#### How to load the functions
+One quick way is to `source` R functions directly from GitHub. For this option, go to the function link, click on `Raw`, copy the URL, and paste it into `source` directly in R. For instance:
+`source("https://raw.githubusercontent.com/bonifazi/TuttiFrutti/main/compute_LR_stats.R")`  
+Another way is to just copy-paste the GitHub code in an `.R` file saved in your machine and `source` it locally.
+
 ### List:
 * [Plot convergence of MiXBLUP](https://github.com/bonifazi/R_utils/blob/main/PlotConvergeneMiXBLUP.R). `MiXBLUP` has a gnuplot code that automatically generates a convergence graph. When gnuplot is not available on your system, you can generate the same graph using this function. The output is a `ggplot2` R object.
 * [Convert a MiX99 parameter file into (co)variance matrices](https://github.com/bonifazi/R_utils/blob/main/meltParfile.R). `MiX99` parameter file for (co)variance components has a lower triangular 'long' format as "`effect_number,i,j,covar_value`". This function converts it into full symmetric (co)variance matrices.
@@ -41,18 +46,19 @@ To view the functions' documentation, first load the [`docstring`](https://githu
 * [Functions for the integration of international (G)EBVs into national evaluations](https://github.com/bonifazi/Integration_EBV_and_GEBV). R functions for integrating (genomic) estimated breeding values ((G)EBVs) into national evaluations following [Bonifazi et al., 2023, GSE](https://doi.org/10.1186/s12711-023-00813-2). See the [README](https://github.com/bonifazi/Integration_EBV_and_GEBV/blob/main/README.md) for more information.
 * ... [new functions will be added here]
 
-## List of R scripts:
-### Description on usage:
+## List of R scripts
+### Description on usage
 These Rscripts are to be run in a command-line style, e.g. `Rscript --vanilla script.R --option1 data --option2 output.csv`. They have a help option which you can call using: `Rscript --vanilla script.R -h` or `Rscript --vanilla script.R --help`. 
 ### List:
 * [Analyse Plink ROH](https://github.com/bonifazi/R_utils/blob/main/Analyse_Plink_ROH.R). A command-line Rscript to analyse genomic inbreeding from Runs of Homozygosity (ROH) obtained from Plink using the `detectRUNS` R package. This script produces .csv and .pdf files on ROH inbreeding. To run it:  
 `Rscript --vanilla Analyse_Plink_ROH.R --plink_files plinkcleaned --plink_roh ROH.hom --group geno_BRD --pedigree ped.ped --output results_dir 2>&1 | tee logfile.log`  
 To see a description of each argument use: `Rscript Analyse_Plink_ROH.R --help.`  
 Note that the `detectRuns` package groups the results based on the number of groups in the first column of the ROH files, which I guess can be used if you want to define sub-populations. For now, the Rscript internally overrides the ‘group’ column of the `--plink_roh` file with that given in the `--group` label.  
-* [Extract EBV and REL from asreml .sln file](https://github.com/bonifazi/TuttiFrutti/blob/main/ExtractAsremlSolutions.R). A command-line Rscript to extract EBV and REL from asreml .sln file. This script produces a .csv file with ID, EBV, REL, and (user-provided) VAR(A) for each trait in the asreml solution file (.sln). Note: inbreeding is currently ignored in the REL calculation. To run it:  
+* [Extract EBV and REL from asreml .sln file](https://github.com/bonifazi/TuttiFrutti/blob/main/ExtractAsremlSolutions.R). A command-line Rscript to extract EBV and REL from asreml .sln file. This script produces a .csv file with ID, EBV, REL, and (user-provided) VAR(A) for each trait in the asreml solution file (.sln). To run it:  
 `Rscript --vanilla ExtractAsremlSolutions.R --file my_path/asreml.sln --effect_name effect5 --trait_names "Trait1, Trait2, Trait3" --varA "varA_trait1, varA_trait2, varA_trait3" --output myoutput.csv`  
-To see a description of each argument use: `Rscript ExtractAsremlSolutions.R --help.`  
-* [Plot postgibbsf90 convergence](https://github.com/bonifazi/TuttiFrutti/blob/main/plot_postgibbsf90.R). Rscript to plot postgibbsf90 covariances. The script produces a .pdf file. See --help for usage and read the details section of the Rscript for more information on input and settings. To run it:  
+To see a description of each argument use: `Rscript ExtractAsremlSolutions.R --help.`
+Note: inbreeding is currently ignored in the REL calculation.
+* [Plot postgibbsf90 convergence](https://github.com/bonifazi/TuttiFrutti/blob/main/plot_postgibbsf90.R). Rscript to plot postgibbsf90 covariances. The script produces a .pdf file. See `--help` for usage and read the details section of the Rscript for more information on input and settings. To run it:  
 `Rscript --vanilla plot_postgibbsf90.R --file my_path/postgibbs_samples --output postgibbs_plots.pdf`
 or with more control on output, e.g., adding trait names and making two main groups:  
 `Rscript --vanilla plot_postgibbsf90.R -f my_path/postgibbs_samples -o postgibbs_plots.pdf -g 2 -t "BRD1_AWW, BRD2_AWW, BRD1_CE, BRD2_CE" `
