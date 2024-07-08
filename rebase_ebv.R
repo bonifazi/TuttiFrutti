@@ -178,7 +178,7 @@ rebase_ebv <- function(data,
       stop("Error: correlation of EBV before and after rebasing is not 1 for column: ", ebv_col, "\n\n Correlation of EBV is: ", test_cor)
     }
     if (round(reg_coef[2], decimals) != 1) {
-      stop("Error: slope of EBV before and after rebasing is not 1 for column: ", ebv_col, "\n\n Slope of EBV rebased on EBV before rebasing is: ", test_slope)
+      stop("Error: slope of EBV before and after rebasing is not 1 for column: ", ebv_col, "\n\n Slope of EBV rebased on EBV before rebasing is: ", reg_coef[2])
     }
     # check that intercept has changed by value of - mean of base POP
     if (round(reg_coef[1], 4) != -round(mean_basepop, 4)) { # round to 4 because of how precision of lm coeff.
