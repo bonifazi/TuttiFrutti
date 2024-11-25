@@ -3,7 +3,9 @@
 ### New Features
 - adding ..
 ### Bug Fixes
+- fixed bug issue XYZ
 ### Improvements
+- update README
 
 ## v1.0.0
 ### Initial Release:
