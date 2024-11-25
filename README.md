@@ -28,6 +28,9 @@ doi={https://doi.org/10.5281/zenodo.11185710}
 ## Contact
 Your suggestions on improving these functions and scripts are very welcome. If you have any suggestions, questions, or need support, feel free to contact renzo.bonifazi@outlook.it, or open an [issue here on GitHub](https://github.com/bonifazi/TuttiFrutti/issues/new).
 
+## News and Updates
+Check out the [NEWS](NEWS.md) file for the latest updates and changes to the package.
+
 ## List of R functions
 ### Description on usage
 The R functions are all documented with the R [docstring](https://cran.r-project.org/web/packages/docstring/vignettes/docstring_intro.html) package. Read the documentation to know more about how to use them, and what options are available. Where possible, I provide some examples to show their functionalities.  
