@@ -31,7 +31,7 @@ Your suggestions on improving these functions and scripts are very welcome. If y
 ## List of R functions
 ### Description on usage
 The R functions are all documented with the R [docstring](https://cran.r-project.org/web/packages/docstring/vignettes/docstring_intro.html) package. Read the documentation to know more about how to use them, and what options are available. Where possible, I provide some examples to show their functionalities.  
-To view the functions' documentation, first load the [`docstring`](https://github.com/Dasonk/docstring) package in R, then view the documentation of the function by running `docstring(fun = <function_name>)` in the console.
+To view the functions' documentation, first load the [`docstring`](https://github.com/Dasonk/docstring) package in R, then view the documentation of the function by running `docstring(fun = <function_name>)` in the console, for example `docstring::docstring(fun = compute_LR_stats)`.
 #### How to load the functions
 One quick way is to `source` R functions directly from GitHub. For this option, go to the function link, click on `Raw`, copy the URL, and paste it into `source` directly in R. For instance:
 `source("https://raw.githubusercontent.com/bonifazi/TuttiFrutti/main/compute_LR_stats.R")`  
