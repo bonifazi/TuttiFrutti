@@ -52,23 +52,41 @@ Another way is to just copy-paste the GitHub code in an `.R` file saved in your 
 ## List of R scripts
 ### Description on usage
 These Rscripts are to be run in a command-line style, e.g. `Rscript --vanilla script.R --option1 data --option2 output.csv`. They have a help option which you can call using: `Rscript --vanilla script.R -h` or `Rscript --vanilla script.R --help`. 
+
 ### List:
-* [Analyse Plink ROH](https://github.com/bonifazi/R_utils/blob/main/Analyse_Plink_ROH.R). A command-line Rscript to analyse genomic inbreeding from Runs of Homozygosity (ROH) obtained from Plink using the `detectRUNS` R package. This script produces .csv and .pdf files on ROH inbreeding. To run it:  
+* [Analyse Plink ROH](https://github.com/bonifazi/R_utils/blob/main/Analyse_Plink_ROH.R). A command-line Rscript to analyse genomic inbreeding from Runs of Homozygosity (ROH) obtained from Plink using the `detectRUNS` R package. This script produces .csv and .pdf files on ROH inbreeding.
+To run it:  
 `Rscript --vanilla Analyse_Plink_ROH.R --plink_files plinkcleaned --plink_roh ROH.hom --group geno_BRD --pedigree ped.ped --output results_dir 2>&1 | tee logfile.log`  
+
 To see a description of each argument use: `Rscript Analyse_Plink_ROH.R --help.`  
 Note that the `detectRuns` package groups the results based on the number of groups in the first column of the ROH files, which I guess can be used if you want to define sub-populations. For now, the Rscript internally overrides the ‘group’ column of the `--plink_roh` file with that given in the `--group` label.  
-* [Extract EBV and REL from asreml .sln file](https://github.com/bonifazi/TuttiFrutti/blob/main/ExtractAsremlSolutions.R). A command-line Rscript to extract EBV and REL from asreml .sln file. This script produces a .csv file with ID, EBV, REL, and (user-provided) VAR(A) for each trait in the asreml solution file (.sln). To run it:  
+
+* [Extract EBV and REL from asreml .sln file](https://github.com/bonifazi/TuttiFrutti/blob/main/ExtractAsremlSolutions.R). A command-line Rscript to extract EBV and REL from asreml .sln file. This script produces a .csv file with ID, EBV, REL, and (user-provided) VAR(A) for each trait in the asreml solution file (.sln).
+To run it:  
 `Rscript --vanilla ExtractAsremlSolutions.R --file my_path/asreml.sln --effect_name effect5 --trait_names "Trait1, Trait2, Trait3" --varA "varA_trait1, varA_trait2, varA_trait3" --output myoutput.csv`  
 To see a description of each argument use: `Rscript ExtractAsremlSolutions.R --help.`
 Note: inbreeding is currently ignored in the REL calculation.
-* [Plot postgibbsf90 convergence](https://github.com/bonifazi/TuttiFrutti/blob/main/plot_postgibbsf90.R). Rscript to plot postgibbsf90 covariances. The script produces a .pdf file. See `--help` for usage and read the details section of the Rscript for more information on input and settings. To run it:  
+
+* [Plot postgibbsf90 convergence](https://github.com/bonifazi/TuttiFrutti/blob/main/plot_postgibbsf90.R). Rscript to plot postgibbsf90 covariances. The script produces a .pdf file. See `--help` for usage and read the details section of the Rscript for more information on input and settings.
+To run it:  
 `Rscript --vanilla plot_postgibbsf90.R --file my_path/postgibbs_samples --output postgibbs_plots.pdf`
 or with more control on output, e.g., adding trait names and making two main groups:  
 `Rscript --vanilla plot_postgibbsf90.R -f my_path/postgibbs_samples -o postgibbs_plots.pdf -g 2 -t "BRD1_AWW, BRD2_AWW, BRD1_CE, BRD2_CE" `
-* [Sort pedigree] TODO: add link. Rscript to sort a given pedigree.See `--help` for usage and details section of the Rscript for more information on input and settings. To run it:
+
+* [Sort pedigree] TODO: add link. Rscript to sort a given pedigree.
+
+See `--help` for usage and details section of the Rscript for more information on input and settings.
+To run it:
 `Rscript --vanilla sort_ped.R --ped ped.txt [--sep SEP] --output sorted_ped.txt`
-* [Convert to Illumin AB coding] TODO: add link. Rscript to convert genotype file to Illumina AB or 0125 coding. See `Rscript --vanilla Convert_to_IlluminaAB.R --manual`. To run it:
+
+* [Convert to Illumin AB coding] TODO: add link. Rscript to convert genotype file to Illumina AB or 0125 coding
+
+See `Rscript --vanilla Convert_to_IlluminaAB.R --manual`.
+To run it:
 `Rscript --vanilla Convert_to_IlluminaAB.R --geno_file "path/to/genotype_file.lgen" --manifest "path/to/manifest.csv" --output "output_file.txt" --longformat TRUE --cpus 4 --skip 5 --TOPonly TRUE`
+Example usage:
+`Rscript --vanilla Convert_to_IlluminaAB.R --geno_file genot.lgen --manifest BovineSNP50_v3_A2.csv --skip 7 --TOPonly T --cpus 10 --output genot_illumina_coded.txt`
+
 * ... [new Rscripts will be added here]
 
 ## Why TuttiFrutti? 
