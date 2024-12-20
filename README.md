@@ -65,6 +65,10 @@ Note: inbreeding is currently ignored in the REL calculation.
 `Rscript --vanilla plot_postgibbsf90.R --file my_path/postgibbs_samples --output postgibbs_plots.pdf`
 or with more control on output, e.g., adding trait names and making two main groups:  
 `Rscript --vanilla plot_postgibbsf90.R -f my_path/postgibbs_samples -o postgibbs_plots.pdf -g 2 -t "BRD1_AWW, BRD2_AWW, BRD1_CE, BRD2_CE" `
+* [Sort pedigree] TODO: add link. Rscript to sort a given pedigree.See `--help` for usage and details section of the Rscript for more information on input and settings. To run it:
+`Rscript --vanilla sort_ped.R --ped ped.txt [--sep SEP] --output sorted_ped.txt`
+* [] TODO: add link. Rscript to convert genotype file to Illumina AB or 0125 coding. See `Rscript --vanilla Convert_to_IlluminaAB.R --manual`. To run it:
+`Rscript --vanilla Convert_to_IlluminaAB.R --geno_file "path/to/genotype_file.lgen" --manifest "path/to/manifest.csv" --output "output_file.txt" --longformat TRUE --cpus 4 --skip 5 --TOPonly TRUE`
 * ... [new Rscripts will be added here]
 
 ## Why TuttiFrutti? 
