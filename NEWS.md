@@ -1,7 +1,8 @@
 # Release Notes for TuttiFrutti
 ## v1.1.0
-### New Features
-- adding ..
+### New Rscripts
+- added 'ped_sort.R'
+- 
 ### Bug Fixes
 - fixed bug issue XYZ
 ### Improvements
