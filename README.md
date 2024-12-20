@@ -81,7 +81,7 @@ To run it:
 
 * [Convert to Illumin AB coding] TODO: add link. Rscript to convert genotype file to Illumina AB or 0125 coding
 
-See `Rscript --vanilla Convert_to_IlluminaAB.R --manual`.
+See `Rscript --vanilla Convert_to_IlluminaAB.R --manual`.  
 To run it:
 `Rscript --vanilla Convert_to_IlluminaAB.R --geno_file "path/to/genotype_file.lgen" --manifest "path/to/manifest.csv" --output "output_file.txt" --longformat TRUE --cpus 4 --skip 5 --TOPonly TRUE`
 Example usage:
