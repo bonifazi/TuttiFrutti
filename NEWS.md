@@ -2,7 +2,7 @@
 ## v1.1.0
 ### New Rscripts
 - added 'ped_sort.R'
-- 
+- added 'Convert_to_IlluminaAB.R'
 ### Bug Fixes
 - fixed bug issue XYZ
 ### Improvements
