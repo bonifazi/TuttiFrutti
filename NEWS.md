@@ -1,9 +1,14 @@
 # Release Notes for TuttiFrutti
 
 ## v1.1.0
+### New R functions
+- added 'extract_hpblup_info.R'
+- added 'extract_mixblup_data_info.R'
+- added 'extract_usr_bin_time.R'
 ### New Rscripts
 - added 'ped_sort.R'
 - added 'Convert_to_IlluminaAB.R'
+
 ### Improvements
 - update README
 - created NEWS
