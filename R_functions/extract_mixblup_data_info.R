@@ -20,7 +20,8 @@ extract_mixblup_data_info <- function(inpfile, keywords) {
 #' The function assumes that provided keywords are defined in the instruction file and they are followed by a file path 
 #' in the format `keyword <file_path>`.
 #' For example, for the keyword "DATAFILE", the instruction file should contain a line such as `DATAFILE <path_to_data_file>`.
-#'
+#' Note that `<filename>.bed` files are automatically replaces with corresponding `<filename>.fam` files, and a message is displayed about this replacement.
+#' 
 #' @examples
 #' \dontrun{
 #' # Assuming 'mixblup_instructions.txt' is the MiXBLUP instruction file
@@ -55,6 +56,13 @@ extract_mixblup_data_info <- function(inpfile, keywords) {
     # Extract the file path for the current keyword
     file_path <- str_extract(str_subset(lines, paste0("^", keyword)), pattern)
     
+    # Handle .bed to .fam file replacement
+    if (length(file_path) > 0 && grepl("\\.bed$", file_path)) {
+      message("\nINFO: Replacing .bed file with corresponding .fam file for keyword:", keyword)
+      file_path <- sub("\\.bed$", ".fam", file_path)
+      message("Now looking for: ",file_path)
+    }
+
     # If file exists, count the number of lines
     if (length(file_path) > 0) {
       file_lines <- as.integer(system(paste0("wc -l < ", file_path), intern = TRUE))
